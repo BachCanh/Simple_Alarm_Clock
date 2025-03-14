@@ -11,6 +11,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -21,6 +23,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -143,8 +146,11 @@ fun AlarmClockApp() {
                     focusedBorderColor = Color(0xFF9370DB),
                     unfocusedBorderColor = Color.White.copy(alpha = 0.3f),
                     containerColor = Color(0xFF1E1E2E).copy(alpha = 0.7f)
+                ),
+                keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),
                 )
-            )
+
+
             Spacer(modifier = Modifier.height(32.dp))
 
             val context = LocalContext.current
@@ -189,6 +195,7 @@ fun AlarmClockApp() {
     }
 }
 
+// Function to set the alarm using intent
 fun setAlarm(context: Context, hour: Int, minute: Int, msg: String) {
     val intent = Intent(AlarmClock.ACTION_SET_ALARM).apply {
         putExtra(AlarmClock.EXTRA_HOUR, hour)
