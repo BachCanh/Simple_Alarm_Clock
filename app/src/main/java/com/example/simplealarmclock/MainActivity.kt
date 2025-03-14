@@ -145,7 +145,6 @@ fun AlarmClockApp() {
                     containerColor = Color(0xFF1E1E2E).copy(alpha = 0.7f)
                 )
             )
-
             Spacer(modifier = Modifier.height(32.dp))
 
             val context = LocalContext.current
